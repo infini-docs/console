@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>数据管理 on INFINI Console</title><link>/zh/docs/reference/data/</link><description>Recent content in 数据管理 on INFINI Console</description><generator>Hugo -- gohugo.io</generator><atom:link href="/zh/docs/reference/data/index.xml" rel="self" type="application/rss+xml"/><item><title>索引管理</title><link>/zh/docs/reference/data/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/zh/docs/reference/data/</guid><description>索引管理 # 索引管理包括对索引的增删改查操作。
+新建索引 # 输入新索引名称及索引设置即可完成添加。
+索引详情 # 可以查看索引健康状态、分片数、文档数、存储大小等详情，以及Mappings、Edit settings的查看和修改。</description></item><item><title>视图管理</title><link>/zh/docs/reference/data/view/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/zh/docs/reference/data/view/</guid><description>数据视图 # 创建和管理数据视图可以帮助您更好地从 Elasticsearch 获取数据。
+创建视图 # 步骤 1 定义数据视图 # 输入数据视图名称 匹配规则：匹配相应索引，也可以使用 (*) 来匹配多个索引。 步骤 2 配置 # 为数据视图索引选择时间字段作为时间过滤
+创建完成
+编辑数据视图 # 页面列出匹配索引的所有字段，可以对字段的Format、Popularity等做相关设置。</description></item><item><title>数据探索</title><link>/zh/docs/reference/data/discover/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/zh/docs/reference/data/discover/</guid><description>数据探索 # 在数据探索里可以根据时间、字段灵活展示索引和视图的数据内容。
+可以对数据进行编辑、删除等操作。</description></item></channel></rss>
