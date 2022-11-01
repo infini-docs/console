@@ -1,0 +1,98 @@
+<!doctype html><html lang=en><head><meta name=generator content="Hugo 0.79.1"><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=description content="Installing The Agent #   INFINI Agent is a submodule of INFINI Console, charge of data scraping and Elasticsearch instance manage. it&rsquo;s manage by INFINI Console INFINI Agent supports mainstream operating systems and platforms. The program package is small, with no extra external dependency. So, the agent can be installed very rapidly.  Before You Begin #  Install and keep INFINI Console running.
+Download #  Download the current INFINI Agent package for your platform."><meta name=theme-color content="#FFFFFF"><meta property="og:title" content="Installing Agent"><meta property="og:description" content="Installing The Agent #   INFINI Agent is a submodule of INFINI Console, charge of data scraping and Elasticsearch instance manage. it&rsquo;s manage by INFINI Console INFINI Agent supports mainstream operating systems and platforms. The program package is small, with no extra external dependency. So, the agent can be installed very rapidly.  Before You Begin #  Install and keep INFINI Console running.
+Download #  Download the current INFINI Agent package for your platform."><meta property="og:type" content="article"><meta property="og:url" content="/docs/reference/agent/install/"><title>Installing Agent | INFINI Console</title><link rel=manifest href=/manifest.json><link rel=icon href=/favicon.png type=image/x-icon><link rel=stylesheet href=/book.min.84eaa6a79900600efa5cbc14401006e14d31cf306ef3db88d7fd45c2f6adc342.css integrity="sha256-hOqmp5kAYA76XLwUQBAG4U0xzzBu89uI1/1Fwvatw0I="><script defer src=/en.search.min.977e13edbdca9d0c793e6be98155147758eb1ab2113ed161caeae2a99e3df4ae.js integrity="sha256-l34T7b3KnQx5PmvpgVUUd1jrGrIRPtFhyuriqZ499K4="></script><link rel=stylesheet type=text/css href=/css/asciinema-player.css><script defer src=/js/jquery-2.x.min.js></script><script defer src=/js/doc.js></script></head><body><input type=checkbox class="hidden toggle" id=menu-control>
+<input type=checkbox class="hidden toggle" id=toc-control><main class="container flex"><aside class=book-menu><nav><h2 class=book-brand><a href=/><img src=/img/logo-en.svg alt=Logo></a></h2><div class=book-search><input type=text id=book-search-input placeholder=Search aria-label=Search maxlength=64 data-hotkeys=s/><div class="book-search-spinner hidden"></div><ul id=book-search-results></ul></div><div class=heading><select class=version-selector>
+<option value>master (latest)</option>
+<option value=v0.6.0>v0.6.x</option>
+<option value=v0.5.0>v0.5.x</option>
+<option value=v0.4.0>v0.4.x</option>
+<option value=v0.3.0>v0.3.x</option></select></div><ul><li><input type=checkbox id=section-f1b7c1b2e5dd43526e77637c475d35b8 class=toggle>
+<label for=section-f1b7c1b2e5dd43526e77637c475d35b8 class="flex justify-between"><a>Quick Start</a>
+<span>▾</span></label><ul><li><a href=/docs/getting-started/install/>Installation</a></li><li><a href=/docs/getting-started/ilm/>Index Settings</a></li><li><a href=/docs/getting-started/docker/>Docker</a></li></ul></li><li><input type=checkbox id=section-084ba1dbb512652712ad881ff8045610 class=toggle checked>
+<label for=section-084ba1dbb512652712ad881ff8045610 class="flex justify-between"><a>Reference</a>
+<span>▾</span></label><ul><li><input type=checkbox id=section-5e5111152017c79ed39a34209990dab7 class=toggle>
+<label for=section-5e5111152017c79ed39a34209990dab7 class="flex justify-between"><a>Alerting</a>
+<span>▾</span></label><ul><li><a href=/docs/reference/alerting/message/>Alerting Center</a></li><li><a href=/docs/reference/alerting/rule/>Alerting Rules</a></li><li><a href=/docs/reference/alerting/channel/>Alerting Channels</a></li><li><a href=/docs/reference/alerting/variables/>Template variables</a></li></ul></li><li><a href=/docs/reference/initialization/>Initialization Guide</a><ul></ul></li><li><input type=checkbox id=section-dc19493497a0afff7833e4e9dc3568aa class=toggle>
+<label for=section-dc19493497a0afff7833e4e9dc3568aa class="flex justify-between"><a>Platform</a>
+<span>▾</span></label><ul><li><a href=/docs/reference/platform/overview/>Platform Overview</a></li><li><a href=/docs/reference/platform/monitoring/>Cluster Monitoring</a></li></ul></li><li><input type=checkbox id=section-77e7dc04d6c2293e5fe55f48c5b1a96d class=toggle>
+<label for=section-77e7dc04d6c2293e5fe55f48c5b1a96d class="flex justify-between"><a href=/docs/reference/data/>Data</a>
+<span>▾</span></label><ul><li><a href=/docs/reference/data/indices/>Index Management</a></li><li><a href=/docs/reference/data/alias/>Alias Management</a></li><li><a href=/docs/reference/data/view/>Data View</a></li><li><a href=/docs/reference/data/discover/>Discover</a></li></ul></li><li><a href=/docs/reference/devtool/>Dev Tools</a><ul></ul></li><li><input type=checkbox id=section-4d372e275e589511fb7282b1f9f3f20f class=toggle>
+<label for=section-4d372e275e589511fb7282b1f9f3f20f class="flex justify-between"><a>System</a>
+<span>▾</span></label><ul><li><a href=/docs/reference/system/cluster/>Cluster Management</a><ul></ul></li><li><a href=/docs/reference/system/command/>Common Commands</a><ul></ul></li><li><input type=checkbox id=section-89e2a3b5192ba2e5bd11dc7aab78be3d class=toggle>
+<label for=section-89e2a3b5192ba2e5bd11dc7aab78be3d class="flex justify-between"><a href=/docs/reference/system/security/>Security</a>
+<span>▾</span></label><ul><li><a href=/docs/reference/system/security/role/>Role</a></li><li><a href=/docs/reference/system/security/user/>User</a></li><li><a href=/docs/reference/system/security/settings/>Settings</a></li></ul></li></ul></li><li><input type=checkbox id=section-5860fb455fea11f0ed079673fd767cda class=toggle checked>
+<label for=section-5860fb455fea11f0ed079673fd767cda class="flex justify-between"><a>Agent</a>
+<span>▾</span></label><ul><li><a href=/docs/reference/agent/manage/manage/>Overview</a></li><li><a href=/docs/reference/agent/install/ class=active>Installing Agent</a></li><li><a href=/docs/reference/agent/docker/>Container Deployment</a></li></ul></li></ul></li><li><a href=/docs/screenshots/>Screenshots</a><ul></ul></li><li><input type=checkbox id=section-7dd85575c84e6825eb9419e748eb5977 class=toggle>
+<label for=section-7dd85575c84e6825eb9419e748eb5977 class="flex justify-between"><a>Tutorials</a>
+<span>▾</span></label><ul><li><a href=/docs/tutorials/start_with_specify_user/>How to specify built-in account name and password to start INFINI Console</a></li><li><a href=/docs/tutorials/create_readonly_account/>How to easily create an Elasticsearch "guest" user</a></li><li><a href=/docs/tutorials/role_with_different_rights/>How to assign different Elasticsearch cluster access permissions to different INFINI Console accounts</a></li><li><a href=/docs/tutorials/role_with_index_limit/>How to assign Elasticsearch index-level permissions to INFINI Console accounts</a></li><li><a href=/docs/tutorials/cluster_health_change/>How to Monitor Elasticsearch Cluster Health</a></li><li><a href=/docs/tutorials/cluster_node_disk_usage/>How to monitor Elasticsearch cluster node disk usage</a></li><li><a href=/docs/tutorials/cluster_slow_request/>How to monitor slow query requests in Elasticsearch</a></li><li><a href=/docs/tutorials/cluster_node_cpu_usage/>How to monitor the CPU usage of Elasticsearch cluster nodes</a></li><li><a href=/docs/tutorials/cluster_node_jvm_usage/>How to monitor JVM usage of Elasticsearch cluster nodes</a></li></ul></li><li><a href=/docs/user-cases/>User Cases</a><ul></ul></li><li><a href=/docs/troubleshooting/>FAQs</a><ul></ul></li><li><a href=/docs/release-notes/>Release Notes</a><ul></ul></li><li><a href=/docs/upgrade/>Upgrade</a><ul></ul></li><li><a href=/docs/resources/>Other Resources</a><ul></ul></li></ul><div class=book-languages tabindex=0 aria-haspopup=true><ul><li class="flex align-center"><img src=/svg/translate.svg class=book-icon alt=Languages>
+English</li></ul><ul class=book-languages-list><li><a href=/zh/ class="flex align-center"><img src=/svg/translate.svg class=book-icon alt=Languages>
+简体中文</a></li><li class=active><a href=/ class="flex align-center"><img src=/svg/translate.svg class=book-icon alt=Languages>
+English</a></li></ul></div><ul><a class=download-btn href=https://release.infinilabs.com/>Download</a></ul></nav><script>(function(){var menu=document.querySelector("aside.book-menu nav");addEventListener("beforeunload",function(event){localStorage.setItem("menu.scrollTop",menu.scrollTop);});menu.scrollTop=localStorage.getItem("menu.scrollTop");})();</script></aside><div class=book-page><header class=book-header><div class="flex align-center justify-between"><label for=menu-control><img src=/svg/menu.svg class=book-icon alt=Menu></label>
+<strong>Installing Agent</strong>
+<label for=toc-control><img src=/svg/toc.svg class=book-icon alt="Table of Contents"></label></div><aside class="hidden clearfix"><nav id=TableOfContents><ul><li><a href=#installing-the-agent>Installing The Agent</a><ul><li><a href=#before-you-begin>Before You Begin</a></li><li><a href=#download>Download</a></li><li><a href=#container-deployment>Container Deployment</a></li><li><a href=#configuration>Configuration</a></li><li><a href=#starting-the-agent>Starting the Agent</a></li><li><a href=#shutting-down-the-agent>Shutting Down the Agent</a></li><li><a href=#system-service>System Service</a></li></ul></li></ul></nav></aside></header><article class=markdown><h1 id=installing-the-agent>Installing The Agent
+<a class=anchor href=#installing-the-agent>#</a></h1><ul><li>INFINI Agent is a submodule of INFINI Console, charge of data scraping and Elasticsearch instance manage. it&rsquo;s manage by INFINI Console</li><li>INFINI Agent supports mainstream operating systems and platforms. The program package is small, with no extra external dependency. So, the agent can be installed very rapidly.</li></ul><h2 id=before-you-begin>Before You Begin
+<a class=anchor href=#before-you-begin>#</a></h2><p>Install and keep
+<a href=../../../getting-started/install>INFINI Console</a> running.</p><h2 id=download>Download
+<a class=anchor href=#download>#</a></h2><p>Download the current INFINI Agent package for your platform.
+<a href=https://release.infinilabs.com/agent/>https://release.infinilabs.com/agent/</a></p><h2 id=container-deployment>Container Deployment
+<a class=anchor href=#container-deployment>#</a></h2><p>INFINI Agent also supports Docker container deployment.</p><a href=/docs/reference/agent/docker/ class=book-btn>Learn More</a><h2 id=configuration>Configuration
+<a class=anchor href=#configuration>#</a></h2><p>Most of the configuration of INFINI Agent can be completed using <code>agent.yml</code>. After the configuration is modified, the agent program needs to be restarted to make the configuration take effect.</p><p>After unzip the file and open <code>agent.yml</code>, you will see this:</p><pre><code>#Used to store data for INFINI Console And Agent
+#Elasticsearch cluster version should be v7.3+
+elasticsearch:
+  - name: default
+    enabled: true
+    monitored: false
+    endpoint: http://192.168.3.4:9200
+    basic_auth:
+      username: elastic
+      password: ZBdkVQUUdF1Sir4X4BGB
+...
+#INFINI Console Endpoint
+agent.manager.endpoint: http://192.168.3.4:9000
+</code></pre><p>In most case, you only need to config the endpoint, but if Elasticsearch has security authentication enabled,then config the username and password.</p><p>The user must have access to the cluster metadata,index metadata,and all indexes with <code>.infini</code> prefix.</p><h2 id=starting-the-agent>Starting the Agent
+<a class=anchor href=#starting-the-agent>#</a></h2><p>Run the agent program to start INFINI Agent, as follows:</p><pre><code>   _      ___   __    __  _____ 
+  /_\    / _ \ /__\/\ \ \/__   \
+ //_\\  / /_\//_\ /  \/ /  / /\/
+/  _  \/ /_\\//__/ /\  /  / /   
+\_/ \_/\____/\__/\_\ \/   \/    
+
+[AGENT] A light-weight, powerful and high-performance elasticsearch agent.
+[AGENT] 0.1.0#14, 2022-08-26 14:09:29, 2025-12-31 10:10:10, 4489a8dff2b68501a0dd9ae15276cf5751d50e19
+[08-31 15:52:07] [INF] [app.go:164] initializing agent.
+[08-31 15:52:07] [INF] [app.go:165] using config: /Users/INFINI/agent/agent-0.1.0-14-mac-arm64/agent.yml.
+[08-31 15:52:07] [INF] [instance.go:72] workspace: /Users/INFINI/agent/agent-0.1.0-14-mac-arm64/data/agent/nodes/cc7h5qitoaj25p2g9t20
+[08-31 15:52:07] [INF] [metrics.go:63] ip:192.168.3.22, host:INFINI-MacBook.local, labels:, tags:
+[08-31 15:52:07] [INF] [api.go:261] api listen at: http://0.0.0.0:8080
+[08-31 15:52:07] [INF] [module.go:116] all modules are started
+[08-31 15:52:07] [INF] [manage.go:180] register agent to console
+[08-31 15:52:07] [INF] [actions.go:367] elasticsearch [default] is available
+[08-31 15:52:07] [INF] [manage.go:203] registering, waiting for review
+[08-31 15:52:07] [INF] [app.go:334] agent is up and running now.
+</code></pre><p>If the above startup information is displayed, the agent is running successfully and listening on the responding port.</p><p>But now agent can&rsquo;t work normally util it&rsquo;s being added to INFINI Console. See
+<a href=/docs/reference/agent/manage/manage/>Agent Manage</a></p><h2 id=shutting-down-the-agent>Shutting Down the Agent
+<a class=anchor href=#shutting-down-the-agent>#</a></h2><p>To shut down INFINI Agent, hold down Ctrl+C. The following information will be displayed:</p><pre><code>^C
+[AGENT] got signal: interrupt, start shutting down
+[08-31 15:57:13] [INF] [module.go:145] all modules are stopped
+[08-31 15:57:13] [INF] [app.go:257] agent now terminated.
+[AGENT] 0.1.0, uptime: 5m6.240314s
+
+   __ _  __ ____ __ _  __ __     
+  / // |/ // __// // |/ // /    
+ / // || // _/ / // || // /    
+/_//_/|_//_/  /_//_/|_//_/   
+
+©INFINI.LTD, All Rights Reserved.
+</code></pre><h2 id=system-service>System Service
+<a class=anchor href=#system-service>#</a></h2><p>To run the INFINI Agent as a system service, run the following commands:</p><pre><code>➜ ./agent -service install
+Success
+➜ ./agent -service start
+Success
+</code></pre><p>Uninstall service:</p><pre><code>➜ ./agent -service stop
+Success
+➜ ./agent -service uninstall
+Success
+</code></pre></article><footer class=book-footer><div class="flex flex-wrap justify-between"><div class=book-languages tabindex=0 aria-haspopup=true><ul><li class="flex align-center"><img src=/svg/translate.svg class=book-icon alt=Languages>
+English</li></ul><ul class=book-languages-list><li><a href=/zh/ class="flex align-center"><img src=/svg/translate.svg class=book-icon alt=Languages>
+简体中文</a></li><li class=active><a href=/ class="flex align-center"><img src=/svg/translate.svg class=book-icon alt=Languages>
+English</a></li></ul></div><div class="flex align-center footer">©INFINI.LTD, All Rights Reserved.</div><script>(function(h,o,t,j,a,r){h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};h._hjSettings={hjid:2716856,hjsv:6};a=o.getElementsByTagName('head')[0];r=o.createElement('script');r.async=1;r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;a.appendChild(r);})(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-L0XH1C4CVP"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}
+gtag('js',new Date());gtag('config','G-L0XH1C4CVP');</script><script type=text/javascript>var _smartsupp=_smartsupp||{};_smartsupp.key='691ff544d18a237005a011a7290b839d8fe811a4';window.smartsupp||(function(d){var s,c,o=smartsupp=function(){o._.push(arguments)};o._=[];s=d.getElementsByTagName('script')[0];c=d.createElement('script');c.type='text/javascript';c.charset='utf-8';c.async=true;c.src='https://www.smartsuppchat.com/loader.js?';s.parentNode.insertBefore(c,s);})(document);</script></div></footer><label for=menu-control class="hidden book-menu-overlay"></label></div><aside class=book-toc><nav id=TableOfContents><ul><li><a href=#installing-the-agent>Installing The Agent</a><ul><li><a href=#before-you-begin>Before You Begin</a></li><li><a href=#download>Download</a></li><li><a href=#container-deployment>Container Deployment</a></li><li><a href=#configuration>Configuration</a></li><li><a href=#starting-the-agent>Starting the Agent</a></li><li><a href=#shutting-down-the-agent>Shutting Down the Agent</a></li><li><a href=#system-service>System Service</a></li></ul></li></ul></nav></aside></main><script src=/js/asciinema-player.js></script></body></html>

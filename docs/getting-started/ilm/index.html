@@ -1,0 +1,371 @@
+<!doctype html><html lang=en><head><meta name=generator content="Hugo 0.79.1"><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=description content="Index Settings #  All monitoring metrics of INFINI Console are stored in the Elasticsearch index. As time goes by, the data will increase. We can configure the life cycle of the index to adapt to our monitoring storage requirements.
+Configure the Default Index Template #  Then you can configure the index template of the Elasticsearch cluster, and execute the following command on the system monitoring cluster to create the index template."><meta name=theme-color content="#FFFFFF"><meta property="og:title" content="Index Settings"><meta property="og:description" content="Index Settings #  All monitoring metrics of INFINI Console are stored in the Elasticsearch index. As time goes by, the data will increase. We can configure the life cycle of the index to adapt to our monitoring storage requirements.
+Configure the Default Index Template #  Then you can configure the index template of the Elasticsearch cluster, and execute the following command on the system monitoring cluster to create the index template."><meta property="og:type" content="article"><meta property="og:url" content="/docs/getting-started/ilm/"><title>Index Settings | INFINI Console</title><link rel=manifest href=/manifest.json><link rel=icon href=/favicon.png type=image/x-icon><link rel=alternate hreflang=zh href=/zh/docs/getting-started/ilm/ title=索引设置><link rel=stylesheet href=/book.min.84eaa6a79900600efa5cbc14401006e14d31cf306ef3db88d7fd45c2f6adc342.css integrity="sha256-hOqmp5kAYA76XLwUQBAG4U0xzzBu89uI1/1Fwvatw0I="><script defer src=/en.search.min.977e13edbdca9d0c793e6be98155147758eb1ab2113ed161caeae2a99e3df4ae.js integrity="sha256-l34T7b3KnQx5PmvpgVUUd1jrGrIRPtFhyuriqZ499K4="></script><script defer src=/js/jquery-2.x.min.js></script><script defer src=/js/doc.js></script></head><body><input type=checkbox class="hidden toggle" id=menu-control>
+<input type=checkbox class="hidden toggle" id=toc-control><main class="container flex"><aside class=book-menu><nav><h2 class=book-brand><a href=/><img src=/img/logo-en.svg alt=Logo></a></h2><div class=book-search><input type=text id=book-search-input placeholder=Search aria-label=Search maxlength=64 data-hotkeys=s/><div class="book-search-spinner hidden"></div><ul id=book-search-results></ul></div><div class=heading><select class=version-selector>
+<option value>master (latest)</option>
+<option value=v0.6.0>v0.6.x</option>
+<option value=v0.5.0>v0.5.x</option>
+<option value=v0.4.0>v0.4.x</option>
+<option value=v0.3.0>v0.3.x</option></select></div><ul><li><input type=checkbox id=section-f1b7c1b2e5dd43526e77637c475d35b8 class=toggle checked>
+<label for=section-f1b7c1b2e5dd43526e77637c475d35b8 class="flex justify-between"><a>Quick Start</a>
+<span>▾</span></label><ul><li><a href=/docs/getting-started/install/>Installation</a></li><li><a href=/docs/getting-started/ilm/ class=active>Index Settings</a></li><li><a href=/docs/getting-started/docker/>Docker</a></li></ul></li><li><input type=checkbox id=section-084ba1dbb512652712ad881ff8045610 class=toggle>
+<label for=section-084ba1dbb512652712ad881ff8045610 class="flex justify-between"><a>Reference</a>
+<span>▾</span></label><ul><li><input type=checkbox id=section-5e5111152017c79ed39a34209990dab7 class=toggle>
+<label for=section-5e5111152017c79ed39a34209990dab7 class="flex justify-between"><a>Alerting</a>
+<span>▾</span></label><ul><li><a href=/docs/reference/alerting/message/>Alerting Center</a></li><li><a href=/docs/reference/alerting/rule/>Alerting Rules</a></li><li><a href=/docs/reference/alerting/channel/>Alerting Channels</a></li><li><a href=/docs/reference/alerting/variables/>Template variables</a></li></ul></li><li><a href=/docs/reference/initialization/>Initialization Guide</a><ul></ul></li><li><input type=checkbox id=section-dc19493497a0afff7833e4e9dc3568aa class=toggle>
+<label for=section-dc19493497a0afff7833e4e9dc3568aa class="flex justify-between"><a>Platform</a>
+<span>▾</span></label><ul><li><a href=/docs/reference/platform/overview/>Platform Overview</a></li><li><a href=/docs/reference/platform/monitoring/>Cluster Monitoring</a></li></ul></li><li><input type=checkbox id=section-77e7dc04d6c2293e5fe55f48c5b1a96d class=toggle>
+<label for=section-77e7dc04d6c2293e5fe55f48c5b1a96d class="flex justify-between"><a href=/docs/reference/data/>Data</a>
+<span>▾</span></label><ul><li><a href=/docs/reference/data/indices/>Index Management</a></li><li><a href=/docs/reference/data/alias/>Alias Management</a></li><li><a href=/docs/reference/data/view/>Data View</a></li><li><a href=/docs/reference/data/discover/>Discover</a></li></ul></li><li><a href=/docs/reference/devtool/>Dev Tools</a><ul></ul></li><li><input type=checkbox id=section-4d372e275e589511fb7282b1f9f3f20f class=toggle>
+<label for=section-4d372e275e589511fb7282b1f9f3f20f class="flex justify-between"><a>System</a>
+<span>▾</span></label><ul><li><a href=/docs/reference/system/cluster/>Cluster Management</a><ul></ul></li><li><a href=/docs/reference/system/command/>Common Commands</a><ul></ul></li><li><input type=checkbox id=section-89e2a3b5192ba2e5bd11dc7aab78be3d class=toggle>
+<label for=section-89e2a3b5192ba2e5bd11dc7aab78be3d class="flex justify-between"><a href=/docs/reference/system/security/>Security</a>
+<span>▾</span></label><ul><li><a href=/docs/reference/system/security/role/>Role</a></li><li><a href=/docs/reference/system/security/user/>User</a></li><li><a href=/docs/reference/system/security/settings/>Settings</a></li></ul></li></ul></li><li><input type=checkbox id=section-5860fb455fea11f0ed079673fd767cda class=toggle>
+<label for=section-5860fb455fea11f0ed079673fd767cda class="flex justify-between"><a>Agent</a>
+<span>▾</span></label><ul><li><a href=/docs/reference/agent/manage/manage/>Overview</a></li><li><a href=/docs/reference/agent/install/>Installing Agent</a></li><li><a href=/docs/reference/agent/docker/>Container Deployment</a></li></ul></li></ul></li><li><a href=/docs/screenshots/>Screenshots</a><ul></ul></li><li><input type=checkbox id=section-7dd85575c84e6825eb9419e748eb5977 class=toggle>
+<label for=section-7dd85575c84e6825eb9419e748eb5977 class="flex justify-between"><a>Tutorials</a>
+<span>▾</span></label><ul><li><a href=/docs/tutorials/start_with_specify_user/>How to specify built-in account name and password to start INFINI Console</a></li><li><a href=/docs/tutorials/create_readonly_account/>How to easily create an Elasticsearch "guest" user</a></li><li><a href=/docs/tutorials/role_with_different_rights/>How to assign different Elasticsearch cluster access permissions to different INFINI Console accounts</a></li><li><a href=/docs/tutorials/role_with_index_limit/>How to assign Elasticsearch index-level permissions to INFINI Console accounts</a></li><li><a href=/docs/tutorials/cluster_health_change/>How to Monitor Elasticsearch Cluster Health</a></li><li><a href=/docs/tutorials/cluster_node_disk_usage/>How to monitor Elasticsearch cluster node disk usage</a></li><li><a href=/docs/tutorials/cluster_slow_request/>How to monitor slow query requests in Elasticsearch</a></li><li><a href=/docs/tutorials/cluster_node_cpu_usage/>How to monitor the CPU usage of Elasticsearch cluster nodes</a></li><li><a href=/docs/tutorials/cluster_node_jvm_usage/>How to monitor JVM usage of Elasticsearch cluster nodes</a></li></ul></li><li><a href=/docs/user-cases/>User Cases</a><ul></ul></li><li><a href=/docs/troubleshooting/>FAQs</a><ul></ul></li><li><a href=/docs/release-notes/>Release Notes</a><ul></ul></li><li><a href=/docs/upgrade/>Upgrade</a><ul></ul></li><li><a href=/docs/resources/>Other Resources</a><ul></ul></li></ul><div class=book-languages tabindex=0 aria-haspopup=true><ul><li class="flex align-center"><img src=/svg/translate.svg class=book-icon alt=Languages>
+English</li></ul><ul class=book-languages-list><li><a href=/zh/docs/getting-started/ilm/ class="flex align-center"><img src=/svg/translate.svg class=book-icon alt=Languages>
+简体中文</a></li><li class=active><a href=/ class="flex align-center"><img src=/svg/translate.svg class=book-icon alt=Languages>
+English</a></li></ul></div><ul><a class=download-btn href=https://release.infinilabs.com/>Download</a></ul></nav><script>(function(){var menu=document.querySelector("aside.book-menu nav");addEventListener("beforeunload",function(event){localStorage.setItem("menu.scrollTop",menu.scrollTop);});menu.scrollTop=localStorage.getItem("menu.scrollTop");})();</script></aside><div class=book-page><header class=book-header><div class="flex align-center justify-between"><label for=menu-control><img src=/svg/menu.svg class=book-icon alt=Menu></label>
+<strong>Index Settings</strong>
+<label for=toc-control><img src=/svg/toc.svg class=book-icon alt="Table of Contents"></label></div><aside class="hidden clearfix"><nav id=TableOfContents><ul><li><a href=#index-settings>Index Settings</a><ul><li><a href=#configure-the-default-index-template>Configure the Default Index Template</a></li><li><a href=#configure-ilm-for-index-infini_metrics>Configure ILM for index .infini_metrics</a></li><li><a href=#configure-ilm-for-index-infini_alert-history>Configure ILM for index .infini_alert-history</a></li><li><a href=#configure-ilm-for-index-infini_activities>Configure ILM for index .infini_activities</a></li></ul></li></ul></nav></aside></header><article class=markdown><h1 id=index-settings>Index Settings
+<a class=anchor href=#index-settings>#</a></h1><p>All monitoring metrics of INFINI Console are stored in the Elasticsearch index. As time goes by, the data will increase. We can configure the life cycle of the index to adapt to our monitoring storage requirements.</p><h2 id=configure-the-default-index-template>Configure the Default Index Template
+<a class=anchor href=#configure-the-default-index-template>#</a></h2><p>Then you can configure the index template of the Elasticsearch cluster, and execute the following command on the <code>system monitoring</code> cluster to create the index template.</p><div class=book-expand><label><div class="book-expand-head flex justify-between"><span>Expand to see Elasticsearch template definitions</span>
+<span>...</span></div><input type=checkbox class=hidden><div class="book-expand-content markdown-inner"><pre><code>PUT _template/.infini
+{
+    &quot;order&quot;: 0,
+    &quot;index_patterns&quot;: [
+      &quot;.infini_*&quot;
+    ],
+    &quot;settings&quot;: {
+      &quot;index&quot;: {
+        &quot;max_result_window&quot;: &quot;10000000&quot;,
+        &quot;mapping&quot;: {
+          &quot;total_fields&quot;: {
+            &quot;limit&quot;: &quot;20000&quot;
+          }
+        },
+        &quot;analysis&quot;: {
+          &quot;analyzer&quot;: {
+            &quot;suggest_text_search&quot;: {
+              &quot;filter&quot;: [
+                &quot;word_delimiter&quot;
+              ],
+              &quot;tokenizer&quot;: &quot;classic&quot;
+            }
+          }
+        },
+        &quot;number_of_shards&quot;: &quot;1&quot;
+      }
+    },
+    &quot;mappings&quot;: {
+      &quot;dynamic_templates&quot;: [
+        {
+          &quot;strings&quot;: {
+            &quot;mapping&quot;: {
+              &quot;ignore_above&quot;: 256,
+              &quot;type&quot;: &quot;keyword&quot;
+            },
+            &quot;match_mapping_type&quot;: &quot;string&quot;
+          }
+        }
+      ]
+    },
+    &quot;aliases&quot;: {}
+}
+</code></pre></div></label></div><h2 id=configure-ilm-for-index-infini_metrics>Configure ILM for index .infini_metrics
+<a class=anchor href=#configure-ilm-for-index-infini_metrics>#</a></h2><div class=book-expand><label><div class="book-expand-head flex justify-between"><span>Expand to view settings</span>
+<span>...</span></div><input type=checkbox class=hidden><div class="book-expand-content markdown-inner"><pre><code>PUT _ilm/policy/infini_metrics-30days-retention
+{
+  &quot;policy&quot;: {
+    &quot;phases&quot;: {
+      &quot;hot&quot;: {
+        &quot;min_age&quot;: &quot;0ms&quot;,
+        &quot;actions&quot;: {
+          &quot;rollover&quot;: {
+            &quot;max_age&quot;: &quot;30d&quot;,
+            &quot;max_size&quot;: &quot;50gb&quot;
+          },
+          &quot;set_priority&quot;: {
+            &quot;priority&quot;: 100
+          }
+        }
+      },
+      &quot;delete&quot;: {
+        &quot;min_age&quot;: &quot;30d&quot;,
+        &quot;actions&quot;: {
+          &quot;delete&quot;: {
+            &quot;delete_searchable_snapshot&quot;: true
+          }
+        }
+      }
+    }
+  }
+}
+
+PUT _template/.infini_metrics-rollover
+{
+    &quot;order&quot; : 100000,
+    &quot;index_patterns&quot; : [
+      &quot;.infini_metrics*&quot;
+    ],
+    &quot;settings&quot; : {
+      &quot;index&quot; : {
+        &quot;format&quot; : &quot;7&quot;,
+        &quot;lifecycle&quot; : {
+          &quot;name&quot; : &quot;infini_metrics-30days-retention&quot;,
+          &quot;rollover_alias&quot; : &quot;.infini_metrics&quot;
+        },
+        &quot;codec&quot; : &quot;best_compression&quot;,
+        &quot;number_of_shards&quot; : &quot;1&quot;,
+        &quot;translog.durability&quot;:&quot;async&quot;
+      }
+    },
+    &quot;mappings&quot; : {
+      &quot;dynamic_templates&quot; : [
+        {
+          &quot;strings&quot; : {
+            &quot;mapping&quot; : {
+              &quot;ignore_above&quot; : 256,
+              &quot;type&quot; : &quot;keyword&quot;
+            },
+            &quot;match_mapping_type&quot; : &quot;string&quot;
+          }
+        }
+      ]
+    },
+    &quot;aliases&quot; : { }
+  }
+
+
+# delete old index
+DELETE .infini_metrics   
+DELETE .infini_metrics-00001
+PUT .infini_metrics-00001
+{
+  &quot;settings&quot;: {
+    &quot;index.lifecycle.rollover_alias&quot;:&quot;.infini_metrics&quot;
+    , &quot;refresh_interval&quot;: &quot;5s&quot;
+  },
+  &quot;aliases&quot;:{
+    &quot;.infini_metrics&quot;:{
+      &quot;is_write_index&quot;:true
+    }
+  }
+}  
+
+</code></pre></div></label></div><p>If the index <code>.infini_metrics</code> already exists before, it needs to be deleted first.</p><h2 id=configure-ilm-for-index-infini_alert-history>Configure ILM for index .infini_alert-history
+<a class=anchor href=#configure-ilm-for-index-infini_alert-history>#</a></h2><p>The alert module stores a large amount of index data for execution records, so you need to configure ILM as follows:</p><div class=book-expand><label><div class="book-expand-head flex justify-between"><span>Expand to view settings</span>
+<span>...</span></div><input type=checkbox class=hidden><div class="book-expand-content markdown-inner"><pre><code class=language-aidl data-lang=aidl>PUT _template/.infini_alert-history-rollover
+{
+    &quot;order&quot; : 100000,
+    &quot;index_patterns&quot; : [
+      &quot;.infini_alert-history*&quot;
+    ],
+    &quot;settings&quot; : {
+      &quot;index&quot; : {
+        &quot;format&quot; : &quot;7&quot;,
+        &quot;lifecycle&quot; : {
+          &quot;name&quot; : &quot;infini_metrics-30days-retention&quot;,
+          &quot;rollover_alias&quot; : &quot;.infini_alert-history&quot;
+        },
+        &quot;codec&quot; : &quot;best_compression&quot;,
+        &quot;number_of_shards&quot; : &quot;1&quot;,
+        &quot;translog.durability&quot;:&quot;async&quot;
+      }
+    },
+    &quot;mappings&quot; : {
+      &quot;dynamic_templates&quot; : [
+        {
+          &quot;strings&quot; : {
+            &quot;mapping&quot; : {
+              &quot;ignore_above&quot; : 256,
+              &quot;type&quot; : &quot;keyword&quot;
+            },
+            &quot;match_mapping_type&quot; : &quot;string&quot;
+          }
+        }
+      ]
+    },
+    &quot;aliases&quot; : { }
+  }
+
+DELETE .infini_alert-history
+
+DELETE .infini_alert-history-00001
+PUT .infini_alert-history-00001
+{
+  &quot;settings&quot;: {
+    &quot;index.lifecycle.rollover_alias&quot;:&quot;.infini_alert-history&quot;
+    , &quot;refresh_interval&quot;: &quot;5s&quot;
+  },
+  &quot;aliases&quot;:{
+    &quot;.infini_alert-history&quot;:{
+      &quot;is_write_index&quot;:true
+    }
+  },
+  &quot;mappings&quot;: {
+    &quot;properties&quot; : {
+        &quot;condition&quot; : {
+          &quot;properties&quot; : {
+            &quot;items&quot; : {
+              &quot;properties&quot; : {
+                &quot;expression&quot; : {
+                  &quot;type&quot; : &quot;keyword&quot;,
+                  &quot;ignore_above&quot; : 256
+                },
+                &quot;minimum_period_match&quot; : {
+                  &quot;type&quot; : &quot;long&quot;
+                },
+                &quot;operator&quot; : {
+                  &quot;type&quot; : &quot;keyword&quot;,
+                  &quot;ignore_above&quot; : 256
+                },
+                &quot;severity&quot; : {
+                  &quot;type&quot; : &quot;keyword&quot;,
+                  &quot;ignore_above&quot; : 256
+                },
+                &quot;values&quot; : {
+                  &quot;type&quot; : &quot;keyword&quot;,
+                  &quot;ignore_above&quot; : 256
+                }
+              }
+            },
+            &quot;operator&quot; : {
+              &quot;type&quot; : &quot;keyword&quot;,
+              &quot;ignore_above&quot; : 256
+            }
+          }
+        },
+        &quot;condition_result&quot; : {
+          &quot;type&quot; : &quot;object&quot;,
+          &quot;enabled&quot; : false
+        },
+        &quot;context&quot; : {
+          &quot;type&quot; : &quot;keyword&quot;,
+          &quot;copy_to&quot; : [
+            &quot;search_text&quot;
+          ]
+        },
+        &quot;created&quot; : {
+          &quot;type&quot; : &quot;date&quot;
+        },
+        &quot;expression&quot; : {
+          &quot;type&quot; : &quot;keyword&quot;,
+          &quot;copy_to&quot; : [
+            &quot;search_text&quot;
+          ]
+        },
+        &quot;id&quot; : {
+          &quot;type&quot; : &quot;keyword&quot;
+        },
+        &quot;is_escalated&quot; : {
+          &quot;type&quot; : &quot;boolean&quot;
+        },
+        &quot;is_notified&quot; : {
+          &quot;type&quot; : &quot;boolean&quot;
+        },
+        &quot;message&quot; : {
+          &quot;type&quot; : &quot;keyword&quot;,
+          &quot;ignore_above&quot; : 256
+        },
+        &quot;objects&quot; : {
+          &quot;type&quot; : &quot;keyword&quot;,
+          &quot;copy_to&quot; : [
+            &quot;search_text&quot;
+          ]
+        },
+        &quot;resource_id&quot; : {
+          &quot;type&quot; : &quot;keyword&quot;
+        },
+        &quot;resource_name&quot; : {
+          &quot;type&quot; : &quot;keyword&quot;
+        },
+        &quot;rule_id&quot; : {
+          &quot;type&quot; : &quot;keyword&quot;
+        },
+        &quot;rule_name&quot; : {
+          &quot;type&quot; : &quot;keyword&quot;
+        },
+        &quot;search_text&quot; : {
+          &quot;type&quot; : &quot;text&quot;,
+          &quot;analyzer&quot; : &quot;suggest_text_search&quot;,
+          &quot;index_prefixes&quot; : {
+            &quot;min_chars&quot; : 2,
+            &quot;max_chars&quot; : 5
+          },
+          &quot;index_phrases&quot; : true
+        },
+        &quot;severity&quot; : {
+          &quot;type&quot; : &quot;keyword&quot;
+        },
+        &quot;state&quot; : {
+          &quot;type&quot; : &quot;keyword&quot;,
+          &quot;ignore_above&quot; : 256
+        },
+        &quot;title&quot; : {
+          &quot;type&quot; : &quot;keyword&quot;
+        },
+        &quot;updated&quot; : {
+          &quot;type&quot; : &quot;date&quot;
+        }
+      }
+    }
+}
+</code></pre></div></label></div><h2 id=configure-ilm-for-index-infini_activities>Configure ILM for index .infini_activities
+<a class=anchor href=#configure-ilm-for-index-infini_activities>#</a></h2><div class=book-expand><label><div class="book-expand-head flex justify-between"><span>Expand to view settings</span>
+<span>...</span></div><input type=checkbox class=hidden><div class="book-expand-content markdown-inner"><pre><code class=language-aidl data-lang=aidl>PUT _template/.infini_activities-rollover
+{
+    &quot;order&quot; : 100000,
+    &quot;index_patterns&quot; : [
+      &quot;.infini_activities*&quot;
+    ],
+    &quot;settings&quot; : {
+      &quot;index&quot; : {
+        &quot;format&quot; : &quot;7&quot;,
+        &quot;lifecycle&quot; : {
+          &quot;name&quot; : &quot;infini_metrics-30days-retention&quot;,
+          &quot;rollover_alias&quot; : &quot;.infini_activities&quot;
+        },
+        &quot;codec&quot; : &quot;best_compression&quot;,
+        &quot;number_of_shards&quot; : &quot;1&quot;,
+        &quot;translog.durability&quot;:&quot;async&quot;
+      }
+    },
+    &quot;mappings&quot; : {
+      &quot;dynamic_templates&quot; : [
+        {
+          &quot;strings&quot; : {
+            &quot;mapping&quot; : {
+              &quot;ignore_above&quot; : 256,
+              &quot;type&quot; : &quot;keyword&quot;
+            },
+            &quot;match_mapping_type&quot; : &quot;string&quot;
+          }
+        }
+      ]
+    },
+    &quot;aliases&quot; : { }
+  }
+
+  DELETE .infini_activities
+  DELETE .infini_activities-00001
+
+  PUT .infini_activities-00001
+  {
+    &quot;settings&quot;: {
+      &quot;index.lifecycle.rollover_alias&quot;:&quot;.infini_activities&quot;
+      , &quot;refresh_interval&quot;: &quot;5s&quot;
+    },
+    &quot;aliases&quot;:{
+      &quot;.infini_activities&quot;:{
+        &quot;is_write_index&quot;:true
+      }
+    }
+  }
+</code></pre></div></label></div></article><footer class=book-footer><div class="flex flex-wrap justify-between"><div class=book-languages tabindex=0 aria-haspopup=true><ul><li class="flex align-center"><img src=/svg/translate.svg class=book-icon alt=Languages>
+English</li></ul><ul class=book-languages-list><li><a href=/zh/docs/getting-started/ilm/ class="flex align-center"><img src=/svg/translate.svg class=book-icon alt=Languages>
+简体中文</a></li><li class=active><a href=/ class="flex align-center"><img src=/svg/translate.svg class=book-icon alt=Languages>
+English</a></li></ul></div><div class="flex align-center footer">©INFINI.LTD, All Rights Reserved.</div><script>(function(h,o,t,j,a,r){h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};h._hjSettings={hjid:2716856,hjsv:6};a=o.getElementsByTagName('head')[0];r=o.createElement('script');r.async=1;r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;a.appendChild(r);})(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-L0XH1C4CVP"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}
+gtag('js',new Date());gtag('config','G-L0XH1C4CVP');</script><script type=text/javascript>var _smartsupp=_smartsupp||{};_smartsupp.key='691ff544d18a237005a011a7290b839d8fe811a4';window.smartsupp||(function(d){var s,c,o=smartsupp=function(){o._.push(arguments)};o._=[];s=d.getElementsByTagName('script')[0];c=d.createElement('script');c.type='text/javascript';c.charset='utf-8';c.async=true;c.src='https://www.smartsuppchat.com/loader.js?';s.parentNode.insertBefore(c,s);})(document);</script></div></footer><label for=menu-control class="hidden book-menu-overlay"></label></div><aside class=book-toc><nav id=TableOfContents><ul><li><a href=#index-settings>Index Settings</a><ul><li><a href=#configure-the-default-index-template>Configure the Default Index Template</a></li><li><a href=#configure-ilm-for-index-infini_metrics>Configure ILM for index .infini_metrics</a></li><li><a href=#configure-ilm-for-index-infini_alert-history>Configure ILM for index .infini_alert-history</a></li><li><a href=#configure-ilm-for-index-infini_activities>Configure ILM for index .infini_activities</a></li></ul></li></ul></nav></aside></main></body></html>
